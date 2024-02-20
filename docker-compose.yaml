@@ -1,0 +1,67 @@
+version: '3.9'
+services:
+  bank_backend:
+    build:
+      context: ./bank
+      dockerfile: Dockerfile
+    image: deuna-challenge-bank
+    container_name: deuna-challenge-bank-backend
+    ports:
+      - '8001:8080'
+    env_file: ./bank/.env
+    environment:
+      - GO_ENV=docker
+    depends_on:
+      - bank_db
+    networks:
+      - deuna_challenge
+
+  bank_db:
+    image: postgres:15-alpine
+    container_name: deuna-challenge-bank-db
+    restart: always
+    ports:
+      - '9001:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: deuna_challenge_bank
+    volumes:
+      - ./bank/scripts/ddl.sql:/docker-entrypoint-initdb.d/create_database.sql
+    networks:
+      - deuna_challenge
+
+  payment_platform_backend:
+    build:
+      context: ./payment-platform
+      dockerfile: Dockerfile
+    image: deuna-challenge-payment-platform
+    container_name: deuna-challenge-payment-platform-backend
+    ports:
+      - '8002:8080'
+    env_file: ./payment-platform/.env
+    environment:
+      - GO_ENV=docker
+    depends_on:
+      - payment_platform_db
+    networks:
+      - deuna_challenge
+
+  payment_platform_db:
+    image: postgres:15-alpine
+    container_name: deuna-challenge-payment-platform-db
+    restart: always
+    ports:
+      - '9002:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: deuna_challenge_payment_platform
+    volumes:
+      - ./payment-platform/scripts/ddl.sql:/docker-entrypoint-initdb.d/create_database.sql
+    networks:
+      - deuna_challenge
+
+networks:
+  deuna_challenge:
+    driver: bridge

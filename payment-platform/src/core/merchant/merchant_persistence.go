@@ -1,0 +1,8 @@
+package merchant
+
+type MerchantPersistence interface {
+	Create(data *Merchant)
+	Update(data *Merchant)
+	GetByMerchantIdOrNil(merchantId string) *Merchant
+	GetByCodeOrNil(code string) *Merchant
+}

@@ -1,0 +1,565 @@
+{
+	"info": {
+		"_postman_id": "f22b5555-cde8-4565-a5fc-15b47e20c490",
+		"name": "Deuna Backend Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22596886"
+	},
+	"item": [
+		{
+			"name": "Bank",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Sign Up",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"national_id\": \"12345678\",\r\n  \"name\": \"Steve Rogers\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8001/customers/sign-up/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"customers",
+										"sign-up",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign Up Random",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"national_id\": \"{{$randomBankAccount}}\",\r\n  \"name\": \"{{$randomFirstName}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8001/customers/sign-up/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"customers",
+										"sign-up",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deposit",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"national_id\": \"12345678\",\r\n  \"amount\": 200\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8001/customers/deposits/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"customers",
+										"deposits",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Merchant",
+					"item": [
+						{
+							"name": "Sign Up",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"merchant_id\": \"87654321\",\r\n  \"name\": \"Tiendas Thanos\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8001/merchants/sign-up/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"merchants",
+										"sign-up",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign Up Random",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"merchant_id\": \"{{$randomBankAccount}}\",\r\n  \"name\": \"{{$randomFirstName}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8001/merchants/sign-up/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"merchants",
+										"sign-up",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Transaction",
+					"item": [
+						{
+							"name": "Transfer Approved",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"customer_id\": \"12345678\",\r\n  \"merchant_id\": \"87654321\",\r\n  \"amount\": 100,\r\n  \"card_token\": \"tok_approved\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8001/transactions/transfers/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"transactions",
+										"transfers",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Transfer Declined",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"customer_id\": \"12345678\",\r\n  \"merchant_id\": \"87654321\",\r\n  \"amount\": 100,\r\n  \"card_token\": \"tok_declined\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8001/transactions/payments/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"transactions",
+										"payments",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refund",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"transaction_code\": \"TX_1708470351471\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8001/transactions/refunds/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8001",
+									"path": [
+										"transactions",
+										"refunds",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001"
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment Platform",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Sign Up",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"national_id\": \"12345678\",\r\n  \"name\": \"Steve Rogers\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8002/customers/sign-up/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"customers",
+										"sign-up",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign Up Random",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"national_id\": \"{{$randomBankAccount}}\",\r\n  \"name\": \"{{$randomFirstName}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8002/customers/sign-up/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"customers",
+										"sign-up",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Merchant",
+					"item": [
+						{
+							"name": "Sign Up",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"merchant_id\": \"87654321\",\r\n  \"name\": \"Tiendas Thanos\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8002/merchants/sign-up/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"merchants",
+										"sign-up",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sign Up Random",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"merchant_id\": \"{{$randomBankAccount}}\",\r\n  \"name\": \"{{$randomFirstName}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8002/merchants/sign-up/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"merchants",
+										"sign-up",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Payment",
+					"item": [
+						{
+							"name": "Payment Approved",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"customer_code\": \"CUS_1708470504645\",\r\n  \"merchant_code\": \"MER_1708470579250\",\r\n  \"amount\": 100,\r\n  \"card_token\": \"tok_approved\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8002/payments/payments/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"payments",
+										"payments",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Payment Declined",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"customer_id\": \"123456\",\r\n  \"merchant_id\": \"759684\",\r\n  \"amount\": 1000,\r\n  \"card_token\": \"tok_declined\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8002/payments/payments/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"payments",
+										"payments",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refund",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"payment_code\": \"PAY_1708470835362\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8002/payments/refunds/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"payments",
+										"refunds",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get By Code",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"transaction_code\": \"PAY_1708395737153\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8002/payments/PAY_1708470835362/v1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8002",
+									"path": [
+										"payments",
+										"PAY_1708470835362",
+										"v1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8002"
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
